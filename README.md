@@ -2,7 +2,7 @@
 
 ## Introduction
 
-_Immutable Web Applications_ is a framework-independent methodology for building static [single-page application](https://en.wikipedia.org/wiki/Single-page_application) that:
+_Immutable Web Applications_ is a framework-agnostic methodology for building static [single-page application](https://en.wikipedia.org/wiki/Single-page_application) that:
 
 - Minimizes risk and complexity of live releases.
 - Simplifies and maximizes caching.
@@ -21,7 +21,7 @@ These principles are inspired by [The Twelve-Factor App](https://12factor.net/).
 
 ## Concepts
 
-The following concepts define the core requirements for an _Immutable Web Application_. They are framework and infrastructure independent.
+The following concepts define the core requirements for an _Immutable Web Application_. They are framework and infrastructure agnostic.
 
 ### _Permabundles_
 
