@@ -2,7 +2,7 @@
 
 ## Introduction
 
-_Immutable Web Applications_ is a framework-agnostic methodology for building static [single-page application](https://en.wikipedia.org/wiki/Single-page_application) that:
+_Immutable Web Applications_ is a framework-agnostic methodology for building and deploying static [single-page application](https://en.wikipedia.org/wiki/Single-page_application) that:
 
 - Minimizes risk and complexity of live releases.
 - Simplifies and maximizes caching.
@@ -39,9 +39,9 @@ Permabundles are the static assets that make up a single-page application.
 
 - They must contain fully-qualified references to the _permabundle_ assets.
 
-- They must define all environment configuration on the global javascript scope.
-
 - They must never be cached by the browser or a public cache that cannot be purged on-demand. (`cache-control: no-store`)
+
+- __They must define all environment-specific configuration.__
 
 _The `index.html` of your Angular app might look like this... it's all configuration!_:
 
