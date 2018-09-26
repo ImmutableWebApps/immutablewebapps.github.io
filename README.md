@@ -2,7 +2,7 @@
 
 ## Introduction
 
-_Immutable Web Applications_ is a framework-agnostic methodology for building and deploying static [single-page application](https://en.wikipedia.org/wiki/Single-page_application) that:
+_Immutable Web Applications_ is a framework-agnostic methodology for building and deploying static [single-page applications](https://en.wikipedia.org/wiki/Single-page_application) that:
 
 - Minimizes risk and complexity of live releases.
 - Simplifies and maximizes caching.
@@ -79,3 +79,18 @@ _The `index.html` of your Angular app might look like this... it's all configura
     </body>
 </html>
 ```
+
+## Development Lifecycle
+
+
+
+### Staged Deployments
+
+1. Implementation
+2. Build
+3. Publish
+
+### Atomic Releases
+
+1. Build `index.html`
+2.
