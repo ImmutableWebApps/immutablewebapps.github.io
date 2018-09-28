@@ -80,17 +80,43 @@ _The `index.html` of your Angular app might look like this... it's all configura
 </html>
 ```
 
-## Development Lifecycle
+## Workflow
 
+The workflow is defined by its separation of build tasks and release tasks. Specifically, the publishing of permabundles as a _build_ and the publishing of index.html as a _release_.
 
+### Publishing of permabundles as a build
 
-### Staged Deployments
+Write code. Build assets. Publish permabundles.
 
-1. Implementation
-2. Build
-3. Publish
+It could be that simple. Of course, the specifics of this process will vary by the project and the team. The important part is that it is a process that results in published permabundles.
 
-### Atomic Releases
+The publishing of a permabundle will typically be triggered from a manual action. Once the permabundle is published it must not be changed. Any required changes must result in publishing a different permabundle.
 
-1. Build `index.html`
-2.
+### Publishing of `index.html` as a release
+
+When a permabundle is published and ready to be deployed, a new version of the `index.html` can be created that references the permabundle. Publishing the new `index.html` will instantly and atomically release the new version of the web application.
+
+### Promoting permabundles
+
+The _value_ of Immutable Web Apps occurs between the publishing of the permabundle and a live release of the web application. Between those events the permabundle can be promoted to production through a process of validation.
+
+This validation might take the form of:
+
+- Automation, regression, or exploratory testing
+- Integration in a staging environment
+- Canary testing in a production replica
+- Blue/green deployment of backing services
+
+If the permabundles fails any of this validation it is abandoned. If it succeeds it is immediately available to be released by publishing a new `index.html`. If an issue is found in production, rolling back is instant and atomic by simply publishing the previous revision of `index.html`.
+
+## Setup
+
+- Separate the management of `index.html` from the code repository that builds the static assets
+
+- Manage your permabundles like they are a Javascript Library CDN, for example [http://cdnjs.org](https://cdnjs.com/libraries/jquery)
+
+- Configure your web application host(s) to serve `index.html` for any path, no exceptions
+
+- Use a CDN
+
+- Favor a serverless cloud platform
