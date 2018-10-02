@@ -21,48 +21,48 @@ These principles are inspired by [The Twelve-Factor App](https://12factor.net/).
 
 ## Decomposing a web application
 
-The _Immutable Web App_ methodology was developed by through a process of decomposing web applications based on the principles declared above and then reconsidering the relationship between the different components. Before defining the methodology, this document will step through the decomposition. It starts with a monolithic web application.
+The _Immutable Web App_ methodology was developed by through a process of decomposing web applications based on the principles declared above and then reconsidering the relationship between the different components. Before defining the methodology, this document will step through the decomposition.
 
-### The Monolithic Web-Application
+### The anatomy of a single-page application
 
-There generally are three types of network traffic commonly made in by web application from the browser:
+The infrastructure for a single-page application must support serving three different types of requests. These three types of requests have different characteristics that should impact the infrastructure that supports them.
+
+#### document
+
+- Entry point to the single-page application.
+- A small HTML document that returns references to the static assets and just enough to bootstrap the loading of the application.
+- Must not be cached by the browser so that changes to the document or static assets are immediately available. Changes are usually in the form of a deployment.
+- Served for all routes that do not refer to static assets or apis to support client-side routing.
 
 #### static assets
 
-- javascript, css, images, bundled assets
-- long term cached
-- artifacts live on the client
+- The javascript, css, images and other physical files that compose the single-page application.
+- Properly versioned or fingerprinted static assets can be cached over a long term.
+- Delivery is stable and unlikely to cause failures or web server downtime.
 
-#### xhr/fetch
+#### api
 
-- dynamic
-- no cache
+- All other dynamic http requests, usually executed as an XHR.
+- Responses are seldom be cached by the browser.
+- The complexity of api requests is higher, contain more dependencies, and more likely to cause failures than delivering static assets.
 
-#### the document
-
-- typically in the form of `index.html`
-- no caching
-- returned for all routes that aren't physical files
+### The Single-Page “Monolith”
 
 > An image of typical network traffic for a simple single page application
 
-A monolithic web application will handle the requests for all three types of requests. Express, a very popular node framework for building web applications, generally supports handling all three types of requests. Running the `express-generator` will create an application skeleton that supports routes for each:
+All of the requests for an application can be handled by a single process.  Express, a very popular Node.js web application framework, supports handling all three types of requests as a part of the same node process:
 
 ```javascript
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
 
-app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 
 /* serves static assets */
 app.use(express.static(path.join(__dirname, 'public')));
@@ -70,72 +70,88 @@ app.use(express.static(path.join(__dirname, 'public')));
 /* serves the document */
 app.use('/', indexRouter);
 
-/* serves dynamic requests */
+/* serves the api */
 app.use('/users', usersRouter);
 
 module.exports = app;
 ```
 
-A monolithic web application will also include a web application framework, like Angular, for building the single-page application assets. Using Express and Angular together in a single code base will results in a multi-stage build:
+#### Architecture
 
-- First the static Angular apps are generated and
-- Then the assets are embedded in the creation of the executable package (docker image, rpm).
+> Image of a machine running the express nod app with static files in it serving all three request types
 
-The package is then typically stored in a versioned repository of packages before it is deployed to a runtime environment.
+- Web application
+
+#### Workflow
 
 > An image of the monolith build process: code => build static assets => build docker image with assets baked in => publish image to docker repo => deployed to server
 
-#### Characteristics of the monolithic web application
+1. First the static Angular apps are generated and
+2. Then the assets are embedded in the creation of the executable package (docker image, rpm).
+3. The package is then typically stored in a versioned repository of packages
+4. It is deployed to a runtime environment.
 
-- separation release tasks from build tasks (good)
-- high cohesion between the backend and frontend contract (good)
-- ability to test the same build artifact in multiple environments (good)
-- if the backend goes down, so does the frontend - serving static assets is much more reliable then dynamic backends, and gracefully handling backend outages is a better user experience than 404s and 500s (bad)
-- zero downtime deploys can be tricky considering caching and existing browser sessions (bad)
-- complicated project dependencies that represent two very different jobs (bad)
-    - building a static web application assets
-    - running a web server
+#### Characteristics
 
-### Separate frontend from backend
+There are several benefits to the encapsulation of an entire web application:
 
-The first stage of decomposition is to separate the client from the server. This aligns with the principle of strict separation of dynamic content from static content.
+- There is high cohesion between the contract of the client and the server.
+- Creating a single executable package decouples the build from the deploy and enables the ability to test the package in multiple environments before promoting it to production, reducing risk during a live release.
+
+However there are several drawback:
+
+- Serving the static assets and api in the same process means that if the api causes a crash the web application is completely unavailable.
+- The dependencies to run a web application are very different than the dependencies to generates the static assets. It can be difficult to manage the dependencies of the project in a way that does not bloat the codebase.
+
+### The Single-Page Frontend/Backend
+
+The first stage of decomposition is to separate the client from the server. This aligns with the principle of strict separation of dynamic content from static content. It also aligns with the best practices recommended by many web application platforms, like Angular.
+
+#### Architecture
+
+> Image of an web server with static files serving static assets and document, image of a web api serving api calls
+
+- Web server with static assets
+
+- Web API
+
+#### Workflow
 
 > An image of the two separated build processes:
 > code => build static assets => publish to static web server with routing rules
 > code => build docker image => publish image to docker repo => deploy to server
 
-#### The static web application
+#### Characteristics
 
-code base generates static assets,
+There are some improvements from the _single-page monolith_:
 
-The static assets can be deployed to a static web server that will have much higher reliability than the backend.
+- Two separate code bases are streamlined to handle their single responsibility.
 
-The static web apps should generally be cached for the long term, the backend should have caching turned off.
+- Independently hosting the static assets will allow the app to continue to operate even if the api is unavailable.
 
-#### The backend api
+But we have also introduced some complexity:
 
-code base generates an executable package.
+- Application platforms, like Angular, recommend defining environment specific configuration at build time. This eliminates the portability of the assets and effectively eliminates the separation of deploy tasks from build tasks.
 
-generally you can read up on 12 factor app for help here, as it has been decoupled from many of the web application specific concerns
+- There is less cohesion between the frontend and the backend. Because they are not deployed atomically, deployments must be phased to support multiple running versions of the application. The reality is that this is also a problem with single-page monoliths, it is just not as obvious.
 
-#### Characteristics of the frontend/backend web application
+### The Single-Page Decomposed App
 
-deployments require a little more careful sequencing to avoid zero-downtime. The backend may need to support multiple versions of an app as the frontend is deployed from one version to another. this is good, because it makes an preexisting problem more visible.
-
-Code bases for generating the backend and the code base for generating the static application is separated.
-
-Client side assets are often environment specific and deployed right after they are built as a part of a release.
-
-### index.html as a special file
-
-The second stage of decomposition continues to emphasize the strict separation of dynamic content from static content by separating `index.html`.
+The second stage of decomposition is going to separate the document (typically, `index.html`) from the static assets.
 
 The document, `index.html`, is a bit of a special case. It may be a static file from the perspective of a specific deployment, but over the lifetime of multiple deployments, it is a dynamic file... evident by the fact that it cannot be cached at any location by the browser. Moreover, it has routing responsibilities that are unlike any of the other static assets or apis.
+
+#### Architecture
 
 > An image of the three separated build processes:
 > code => build static assets => publish to static web server
 > code => build docker image => publish image to docker repo => deploy to server
 > index.html => publish to static web server that always returns index.html
+
+#### Workflow
+
+
+
 
 #### `index.html`
 
@@ -145,7 +161,7 @@ can be hosted by a static web server that for whatever path it is requested it a
 
 it allows us to simplify the hosting of all other static assets, all other static assets can be hosted in a completely different domain, and cached for long term if they are versioned or fingerprinted
 
-#### Characteristics of the index/frontend/backend web application
+#### Characteristics
 
 assets can be build prior to deployment, a live release is effectively the act of updating `index.html`, but opportunities for testing them are limited.
 
