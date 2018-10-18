@@ -88,7 +88,7 @@ Static assets that do not contain anything environment-specific and  are hosted 
 - <script src="main.js" type="text/javascript"></script>
 
 + <!-- permanent, reuseable -->
-+ <script src="https://assets.myapp.com/apps/bae1407/main.js" type="text/javascript"></script>
++ <script src="https://assets.myapp.com/apps/1.0.2/main.js" type="text/javascript"></script>
 ```
 
 #### `index.html` defines the values of the globally scoped environment variables
@@ -135,7 +135,7 @@ The `index.html` of most single-page web applications is typically a small docum
         <app-root></app-root>
 
         <!-- fully-qualified static assets -->
-        <script src="https://assets.myapp.com/apps/bae1407/main.js" type="text/javascript"></script>
+        <script src="https://assets.myapp.com/apps/1.0.2/main.js" type="text/javascript"></script>
 
     </body>
 </html>
