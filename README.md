@@ -31,7 +31,7 @@ Static assets are the files (javascript, css, images) that are generated from a 
 
 All of the leading application frameworks ([Angular CLI](https://github.com/angular/angular-cli/wiki/stories-application-environments), [Create React App](https://cli.vuejs.org/guide/mode-and-env.html#using-env-variables-in-client-side-code), [Ember CLI](https://ember-cli.com/user-guide/#Environments), [Vue CLI 3](https://cli.vuejs.org/guide/mode-and-env.html#using-env-variables-in-client-side-code)) recommend defining environment _values_ at _compile time_. This practice requires that the static assets are generated for each environment and regenerated for any change to an environment.
 
-_Immutable Web Applications_ reference environment _variables_ that are  defined on the global scope and that are set to values in the `index.html` that unique to the deployment:
+_Immutable Web Applications_ reference environment _variables_ that are  defined on the global scope and that are set to values in the `index.html` that are unique to the deployment:
 
 ```diff
   import { Injectable } from '@angular/core';
@@ -59,7 +59,7 @@ _Immutable Web Applications_ reference environment _variables_ that are  defined
 
 #### Static assets must be hosted at locations that are unique and _independent of the web application environment(s)_.
 
-Static assets that do not contain anything environment-specific can be built once, published to once to a unique location, and then used in multiple environments of the web application.
+Static assets that do not contain anything environment-specific can be built once, published to a unique location, and then used in multiple environments of the web application.
 
 These static assets share the same qualities as hosted javascript libraries on content delivery networks (CDN) ([Google Hosted Libraries](https://developers.google.com/speed/libraries/), [cdnjs](https://cdnjs.com/), [jsDelivr](https://www.jsdelivr.com/), [UNPKG](https://unpkg.com/)):
 
@@ -69,7 +69,7 @@ The location of the jquery library above, referenced by innumerable web applicat
 
 <code>https:/<span></span>/<span style="font-weight: bold">assets.myapp.c<span></span>om</span>/apps/<span style="font-weight: bold">1.0.2</span>/main.js</code>
 
-Similarly, the location of the example the web application javascript file is unique and hosted at a location that is dedicated to static assets. The static asset web server is a repository for versions of the web application.
+Similarly, the location of the web application javascript files are unique and hosted at a location that is dedicated to static assets. The static asset web server is a repository for versions of the web application.
 
 #### Configure the static assets for long-term caching
 
@@ -169,7 +169,7 @@ The infrastructure to support _Immutable Web Apps_ is composed of three parts:
 
 - A static web server to host the web application
 - A static web server to host the static assets
-- A content delivery network to make optimize the delivery
+- A content delivery network to optimize the delivery of the web application and static assets
 
 The two web servers have different characteristics:
 
@@ -211,7 +211,7 @@ Managing `cache-control` headers can be intimidating, especially when the web ap
 
 ### Simplified routing
 
-The leading application frameworks do not separate the location of static assets from the `index.html` in their [deployment recommendations](https://angular.io/guide/deployment#server-configuration). Instead, they recommend adding routing rules to the web server that returns `index.html` for all paths that do not resolve to a physical file. The implementation of these routing rules may differ from between web servers and mistakes often result in paths that resolve to the wrong resource.
+The leading application frameworks do not separate the location of static assets from the `index.html` in their [deployment recommendations](https://angular.io/guide/deployment#server-configuration). Instead, they recommend adding routing rules to the web server that returns `index.html` for all paths that do not resolve to a physical file. The implementation of these routing rules may differ between web servers and mistakes often result in paths that resolve to the wrong resource.
 
 Separating the hosting of `index.html` and the static assets eliminates this risk. The static assets server always serves a physical file represented by the url and the web application server always serves `index.html` for any url.
 
