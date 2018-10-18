@@ -13,25 +13,25 @@ _Immutable Web Applications_ is a framework-agnostic methodology for building an
 
 The methodology is based on the principles of ___strictly separating___:
 
-- Dynamic content from static content.
 - Configuration from code.
 - Release tasks from build tasks.
+- Dynamic content from static content.
 
 These principles are inspired by [The Twelve-Factor App](https://12factor.net/).
 
 ## Decomposing a web application
 
-The _Immutable Web App_ methodology was developed by through a process of decomposing web applications based on the principles declared above and then reconsidering the relationship between the different components. Before defining the methodology, this document will step through the decomposition.
+The _Immutable Web App_ methodology was developed by decomposing web applications based on the principles above and then reconsidering the relationship between the different components. Before defining the methodology, this document will step through the decomposition.
 
 ### The anatomy of a single-page application
 
-The infrastructure for a single-page application must support serving three different types of requests. These three types of requests have different characteristics that should impact the infrastructure that supports them.
+The web server infrastructure for a single-page application must support three different types of HTTP requests. These three types of requests have different characteristics that should impact the infrastructure.
 
 #### document
 
 - Entry point to the single-page application.
 - A small HTML document that returns references to the static assets and just enough to bootstrap the loading of the application.
-- Must not be cached by the browser so that changes to the document or static assets are immediately available. Changes are usually in the form of a deployment.
+- Must not be cached by the browser so that changes to the document or static assets are instantly available.
 - Served for all routes that do not refer to static assets or apis to support client-side routing.
 
 #### static assets
@@ -307,3 +307,16 @@ If the permabundles fails any of this validation it is abandoned. If it succeeds
 - Use a CDN
 
 - Favor a serverless cloud platform
+
+
+
+
+
+
+
+
+
+
+
+
+The best practices for all of the leading application frameworks ([Angular CLI](https://github.com/angular/angular-cli/wiki/stories-application-environments), [Create React App](https://cli.vuejs.org/guide/mode-and-env.html#using-env-variables-in-client-side-code), [Ember CLI](https://ember-cli.com/user-guide/#Environments), [Vue CLI 3](https://cli.vuejs.org/guide/mode-and-env.html#using-env-variables-in-client-side-code)) all include specific environment variables during the build.
