@@ -242,4 +242,8 @@ Achieving widespread support will require:
 
 - [_"Single-page App Deployments"_](https://www.meetup.com/nh-js-manchester/events/255671618/), Gene Connolly, [NH.js](https://www.meetup.com/nh-js-manchester/), November 14th 2018
 
+## Acknowledgements
+
+_Immutable Web Apps_ was developed based on the research and experiences building web applications at [Meltwater](https://www.meltwater.com/). Learn more about the things we doing at our engineering blog: [_under the hood_](https://underthehood.meltwater.com/).
+
 immutablewebapps@gmail.com
