@@ -143,13 +143,13 @@ The `index.html` of most single-page web applications is typically a small docum
 
 ## Workflow
 
-The _Immutable Web App_ separate release tasks from build tasks into two distinct workflows.
+The _Immutable Web App_ separates release tasks from build tasks into two distinct workflows.
 
 ### Building
 
 The codebase of an _Immutable Web App_ has the responsibility of building static assets and publishing them to a static web server. Each state of the codebase can be represented by a set of static assets at a unique location. Not every state of the codebase needs to be published, but no single state of the codebase should ever need to be published more than once.
 
-Generally the codebase is a source controlled code repository that is capable of building, versioning, and publishing static assets to a static web server.
+Generally the codebase is a source controlled code repository integrated with a continuous integration system that is capable of building, versioning, and publishing static assets to a static web server.
 
 _An example of this might be:_
 
@@ -221,7 +221,7 @@ _Immutable Web Applications_ methodology builds on several trends in web applica
 
 - __Modern Application Frameworks:__ Angular, React, Vue, and Ember have enabled teams to build increasingly complex single-page static apps. Tools like webpack have improved the ability to create, optimize, and manage build artifacts.
 
-- __DevOps:__ The culture of DevOps has enabled web application developers to decompose and reevaluate their web application infrastructure to better server the requirements of their web applications.
+- __DevOps:__ The culture of DevOps has enabled web application developers to decompose and reevaluate their web application infrastructure to better serve the requirements of their web applications.
 
 - __Maturing Application Patterns & Practices:__ Backend applications and services are converging around a set of best practices that support portability, scalability, and high availability. This trend has dramatically increased the tools and services available, especially related to containers and container orchestration. Many of these practices are just now starting to be applied to static single-page web applications.
 
