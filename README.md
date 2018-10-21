@@ -237,8 +237,6 @@ Achieving widespread support will require:
 
 - __Advocacy and education__ of _Immutable Web Applications_ through blog posts and presentations.
 
-
-
 ## Talks
 
 - [_"Single-page App Deployments"_](https://www.meetup.com/nh-js-manchester/events/255671618/), Gene Connolly, [NH.js](https://www.meetup.com/nh-js-manchester/), November 14th 2018
