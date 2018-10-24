@@ -31,31 +31,28 @@ Static assets are the files (javascript, css, images) that are generated from a 
 
 All of the leading application frameworks ([Angular CLI](https://github.com/angular/angular-cli/wiki/stories-application-environments), [Create React App](https://cli.vuejs.org/guide/mode-and-env.html#using-env-variables-in-client-side-code), [Ember CLI](https://ember-cli.com/user-guide/#Environments), [Vue CLI 3](https://cli.vuejs.org/guide/mode-and-env.html#using-env-variables-in-client-side-code)) recommend defining environment _values_ at _compile time_. This practice requires that the static assets are generated for each environment and regenerated for any change to an environment.
 
-_Immutable Web Applications_ reference environment _variables_ that are  defined on the global scope and that are set to values in the `index.html` that are unique to the deployment:
+_Immutable Web Applications_ reference environment _variables_ that are defined on the global scope and either referenced directly on the `window` object or through an injected service that is a wrapper for the environment variables:
 
 ```diff
-  import { Injectable } from '@angular/core';
-  import { HttpClient } from '@angular/common/http';
-
-- // remove environment constants that are defined in the codebase or at compile time
-- import { environment } from './environments/environment';
-
-  @Injectable()
-  export class DataService {
-    configUrl = ;
+  export class UserService {
+    webServiceUrl: String;
 
     constructor(
         private http: HttpClient
-        private
-        ) { }
+        ) {
+-         // remove any configuration that is hardcoded or included during compilation
+-         this.webServiceUrl = 'https://api.myapp.com'
++         // use globally scoped environment variables that are unique to the deployment
++         this.webServiceUrl = window.env.API
+        }
 
-    getData() {
--      return this.http.get(`${environment.API}/assets/data.json`);
-+      // use globally scoped environment variables that are unique to the deployment
-+      return this.http.get(`${window.env.API}/assets/data.json`);
+    getUsers() {
+      return this.http.get(`${this.webServiceUrl}/users`);
     }
   }
 ```
+
+The values for the environment _variables_ are set on an `index.html` that is unique to each environment.
 
 #### Static assets must be hosted at locations that are unique and _independent of the web application environment(s)_.
 
@@ -96,7 +93,7 @@ Static assets that do not contain anything environment-specific and  are hosted 
 ```html
 <script>
 env = {
-    API: 'https://api.myapp.com'
+    API: 'https://api.myapp.com',
     GA: 'UA-126263119-1'
 }
 </script>
@@ -127,7 +124,8 @@ The `index.html` of most single-page web applications is typically a small docum
         <!-- environment variables -->
         <script>
         env = {
-            API: 'https://api.myapp.com'
+            API: 'https://api.myapp.com',
+            GA: 'UA-126263119-1'
         }
         </script>
 
