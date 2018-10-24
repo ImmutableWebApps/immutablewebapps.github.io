@@ -31,7 +31,7 @@ Static assets are the files (javascript, css, images) that are generated from a 
 
 All of the leading application frameworks ([Angular CLI](https://github.com/angular/angular-cli/wiki/stories-application-environments), [Create React App](https://cli.vuejs.org/guide/mode-and-env.html#using-env-variables-in-client-side-code), [Ember CLI](https://ember-cli.com/user-guide/#Environments), [Vue CLI 3](https://cli.vuejs.org/guide/mode-and-env.html#using-env-variables-in-client-side-code)) recommend defining environment _values_ at _compile time_. This practice requires that the static assets are generated for each environment and regenerated for any change to an environment.
 
-_Immutable Web Applications_ reference environment variables that are defined on the global scope and reference one of two ways:
+_Immutable Web Applications_ reference environment _variables_ that are defined on the global scope and reference one of two ways:
 
 - Directly from the `window` object
 - Through an injected service that wraps the environment variables
