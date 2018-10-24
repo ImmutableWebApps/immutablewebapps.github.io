@@ -227,7 +227,7 @@ _Immutable Web Applications_ methodology builds on several trends in web applica
 
 ## Future Work
 
-_Immutable Web Applications_ is not yet actively supported any application framework, tools, or services. Most static, single-page applications should be able to adopt the _Immutable Web Applications_ methodology by making several minor structural changes to the codebase, build process, and infrastructure. Until there is widespread support, however, web applications that use advanced [code-splitting](https://webpack.js.org/guides/code-splitting/) techniques may find adoption to be complicated or impractical.
+_Immutable Web Applications_ is not yet actively supported by any application framework, tools, or services. Most static, single-page applications should be able to adopt the _Immutable Web Applications_ methodology by making several minor structural changes to the codebase, build process, and infrastructure. Until there is widespread support, however, web applications that use advanced [code-splitting](https://webpack.js.org/guides/code-splitting/) techniques may find adoption to be complicated or impractical.
 
 Achieving widespread support will require:
 
