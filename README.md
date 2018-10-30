@@ -164,7 +164,7 @@ A set of `index.html` files, one for each environment, hosted in a __Github__ re
 
 ### Infrastructure
 
-![Infrastructure]({{ site.url }}/assets/infrastructure.png)
+![Infrastructure](assets/infrastructure.png)
 
 The infrastructure to support _Immutable Web Apps_ is composed of three parts:
 
