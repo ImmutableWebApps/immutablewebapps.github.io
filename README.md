@@ -17,8 +17,6 @@ The methodology is based on the principles of ___strictly separating___:
 - Release tasks from build tasks.
 - Dynamic content from static content.
 
-These principles are inspired by [The Twelve-Factor App](https://12factor.net/).
-
 ## Concepts
 
 The following concepts define the core requirements for an _Immutable Web Application_. They are framework and infrastructure agnostic.
@@ -225,6 +223,12 @@ _Immutable Web Applications_ methodology builds on several trends in web applica
 - __DevOps:__ The culture of DevOps has enabled web application developers to decompose and reevaluate their web application infrastructure to better serve the requirements of their web applications.
 
 - __Maturing Application Patterns & Practices:__ Backend applications and services are converging around a set of best practices that support portability, scalability, and high availability. This trend has dramatically increased the tools and services available, especially related to containers and container orchestration. Many of these practices are just now starting to be applied to static single-page web applications.
+
+## Influences
+
+ - [__The Twelve-Factor App__](https://12factor.net/): This methodology for building web apps is based on _separation of concerns_ in order to achieve portability and robustness. _Immutable Web Apps_ separate several of the same concerns in order to achieve similar objectives.
+
+ - [__JAMstack__](https://jamstack.org/): The _Immutable Web Apps_ methodology is completely aligned with the [best practices](https://jamstack.org/best-practices/) of the JAMstack.
 
 ## Future Work
 
