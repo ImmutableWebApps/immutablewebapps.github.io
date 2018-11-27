@@ -168,11 +168,11 @@ A set of `index.html` files, one for each environment, hosted in a __Github__ re
 
 The infrastructure to support _Immutable Web Apps_ is composed of three parts:
 
-- A static web server to host the web application
-- A static web server to host the static assets
-- A content delivery network to optimize the delivery of the web application and static assets
+- __Web Application Server__: A static web server to host a web application environment by serving `index.html`.
+- __Static Asset Server__: A static web server to host the immutable static assets.
+- __API__: One or more publicly exposed endpoints to interact with the web application backend.
 
-The two web servers have different characteristics:
+The two static web servers have different behaviors:
 
 | | Web Application Server | Static Asset Server |
 | --- | --- | --- |
