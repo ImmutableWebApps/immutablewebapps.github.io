@@ -246,7 +246,7 @@ _Immutable Web Applications_ methodology builds on several trends in web applica
 
 - [_"Single-page App Deployments"_](https://www.meetup.com/nh-js-manchester/events/255671618/), Gene Connolly, [NH.js](https://www.meetup.com/nh-js-manchester/), November 14th 2018
 
-- [_"Risk-free Deployments with Immutable Web Apps"_](https://underthehood.meltwater.com/blog/2018/12/03/risk-free-deployments-with-immutable-web-apps/), Gene Connolly, [underthehood.meltwater.com], December 3rd 2018
+- [_"Risk-free Deployments with Immutable Web Apps"_](https://underthehood.meltwater.com/blog/2018/12/03/risk-free-deployments-with-immutable-web-apps/), Gene Connolly, [underthehood.meltwater.com](https://underthehood.meltwater.com), December 3rd 2018
 
 ## ![Future Work](icons/favicon-16x16.png) Future Work
 
