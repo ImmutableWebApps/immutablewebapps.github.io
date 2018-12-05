@@ -176,7 +176,7 @@ The two static web servers have different behaviors:
 
 | | Web Application Server | Static Asset Server |
 | --- | --- | --- |
-| Content | `index.hmtl` | Static assets (`*.js`,`*.css`, images, etc)|
+| Content | `index.html` | Static assets (`*.js`,`*.css`, images, etc)|
 | Routing | always `index.html` | the physical file at the Url |
 | Cache-Control | `no store` | `cache-control: public, max-age=31536000, immutable` |
 | Instances | One per web application environment | One per web application
