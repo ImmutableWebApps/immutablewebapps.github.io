@@ -71,7 +71,7 @@ Similarly, the location of the web application javascript files are unique and h
 
 #### Configure the static assets for long-term caching
 
-Static assets that do not contain anything environment-specific and  are hosted at a unique and permanent location may be configured to be [cached by the browser (almost) indefinitely](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control#Caching_static_assets):
+Static assets that does not contain anything environment-specific and  are hosted at a unique and permanent location may be configured to be [cached by the browser (almost) indefinitely](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control#Caching_static_assets):
 
  `cache-control: public, max-age=31536000, immutable`
 
@@ -79,7 +79,7 @@ Static assets that do not contain anything environment-specific and  are hosted 
 
  The HTML document of a single-page application (often `index.html`) is ___not___ static. It varies from environment to environment, and deploy to deploy. The HTML document is a composition of the environment-specific configuration and _immutable_ static assets that define the web application.
 
-#### `index.html` contains fully-qualified references to the static assets
+#### `index.html` contains fully-sophisticated references to the static assets
 
 ```diff
 - <!-- not unique, not independent -->
