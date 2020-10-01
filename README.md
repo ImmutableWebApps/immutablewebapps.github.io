@@ -9,7 +9,7 @@ _Immutable Web Applications_ is a framework-agnostic methodology for building an
 - Minimizes the need for servers and administration of runtime environments.
 - Enables continuous delivery through simple, flexible, atomic deployments.
 
-## ![Principles](icons/favicon-16x16.png) Principles
+## ![Principles](icons/favicon-16x16.png) Principles We Work On
 
 The methodology is based on the principles of ___strictly separating___:
 
