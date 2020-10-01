@@ -63,7 +63,7 @@ These static assets share the same qualities as hosted javascript libraries on c
 
 <code>https:/<span></span>/<span style="font-weight: bold">ajax.googleapis.c<span></span>om</span>/ajax/libs/jquery/<span style="font-weight: bold">3.3.1</span>/jquery.min.js</code>
 
-The location of the jquery library above, referenced by innumerable web applications, is both independent of the applications and uniquely versioned.
+The location of the <i> jquery </i>library above, referenced by innumerable web applications, is both independent of the applications and uniquely versioned.
 
 <code>https:/<span></span>/<span style="font-weight: bold">assets.myapp.c<span></span>om</span>/apps/<span style="font-weight: bold">1.0.2</span>/main.js</code>
 
