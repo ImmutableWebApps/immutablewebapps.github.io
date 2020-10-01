@@ -148,7 +148,7 @@ The _Immutable Web App_ separates release tasks from build tasks into two distin
 
 The codebase of an _Immutable Web App_ has the responsibility of building static assets and publishing them to a static web server. Each state of the codebase can be represented by a set of static assets at a unique location. Not every state of the codebase needs to be published, but no single state of the codebase should ever need to be published more than once.
 
-Generally the codebase is a source controlled code repository integrated with a continuous integration system that is capable of building, versioning, and publishing static assets to a static web server.
+Generally, the codebase is a source controlled code repository integrated with a continuous integration system that is capable of building, versioning, and publishing static assets to a static web server.
 
 _An example of this might be:_
 
@@ -156,7 +156,7 @@ An __Angular__ project hosted in a __GitHub__ repo. The repo is integrated with 
 
 ### Releasing
 
-The `index.html` files are managed independently of the codebase and they serve as a manifest for each environment. They should be considered configuration files and managed accordingly. Additionally, There needs to be a mechanism for modifying or replacing the `index.html` in each web application environment. The act of changing an `index.html` is effectively a deployment.
+The `index.html` files are managed independently of the codebase and they serve as a manifest for each environment. They should be considered configuration files and managed accordingly. Additionally, there needs to be a mechanism for modifying or replacing the `index.html` in each web application environment. The act of changing an `index.html` is effectively a deployment.
 
 _An example of this might be:_
 
@@ -194,7 +194,7 @@ Building static assets is a complicated process that often involves:
 - Bundling
 - Uglifying, Code Splitting, Tree Shaking, Autoprefixing... the list goes on...
 
-These processes are time consuming, rely heavily upon external dependencies, and often behave in a seemingly non-deterministic way. They are not processes that should be concluded by immediately publishing the generated assets to a production environment without validation. Even the act of publishing the multiple large static assets is a process that may be interrupted and leave the web application environment in a corrupt state.
+These processes are time-consuming, rely heavily upon external dependencies, and often behave in a seemingly non-deterministic way. They are not processes that should be concluded by immediately publishing the generated assets to a production environment without validation. Even the act of publishing the multiple large static assets is a process that may be interrupted and leave the web application environment in a corrupt state.
 
 _Immutable Web Applications_ are generated once and published once to a permanent location. This process happens in advance of a live release. They can be validated in staging environments and promoted to the production environment without being regenerated at significantly lower risk.
 
@@ -208,7 +208,7 @@ In the unlikely event that a browser attempts to load a stale version of `index.
 
 ### Simplified caching
 
-Managing `cache-control` headers can be intimidating, especially when the web application infrastructure leverages public caches like the ones used by CDNs. The two simplest concepts in caching are: "Always cached", and "Never cached". _Immutable Web Apps_ embraces these concepts completely separating and the code that can be "Always cached" from configuration that is "Never cached".
+Managing `cache-control` headers can be intimidating, especially when the web application infrastructure leverages public caches like the ones used by CDNs. The two simplest concepts in caching are: "Always cached", and "Never cached". _Immutable Web Apps_ embraces these concepts completely separating and the code that can be "Always cached" from the configuration that is "Never cached".
 
 ### Simplified routing
 
