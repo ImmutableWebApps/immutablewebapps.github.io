@@ -1,4 +1,4 @@
-# ![Immutable Web Apps](icons/favicon-32x32.png) Immutable Web Apps
+# ![Immutable Web Apps](icons/favicon-32x32.png) Amazing Immutable Web Apps
 
 ## ![Introduction](icons/favicon-16x16.png) Introduction
 
