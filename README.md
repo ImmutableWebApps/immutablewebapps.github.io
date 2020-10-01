@@ -260,7 +260,7 @@ Achieving widespread support will require:
 
 - __Advocacy and education__ of _Immutable Web Applications_ through blog posts and presentations.
 
-## ![Acknowledgements](icons/favicon-16x16.png) Acknowledgements
+## ![Acknowledgements](icons/favicon-16x16.png) Acknowledgement
 
 _Immutable Web Apps_ was developed based on the research and experiences building web applications at [Meltwater](https://www.meltwater.com/). Learn more about the things we are doing at our engineering blog: [underthehood.meltwater.com](https://underthehood.meltwater.com/).
 
