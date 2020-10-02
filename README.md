@@ -1,4 +1,6 @@
-# ![Immutable Web Apps](icons/favicon-32x32.png) Immutable Web Apps
+*Immutable Web Apps an amazing Web Design*
+
+# ![Immutable Web Apps](icons/favicon-32x32.png) 
 
 ## ![Introduction](icons/favicon-16x16.png) Introduction
 
@@ -28,6 +30,9 @@ Static assets are the files (javascript, css, images) that are generated from a 
 #### Static assets must not contain anything that is environment-specific
 
 All of the leading application frameworks ([Angular CLI](https://github.com/angular/angular-cli/wiki/stories-application-environments), [Create React App](https://cli.vuejs.org/guide/mode-and-env.html#using-env-variables-in-client-side-code), [Ember CLI](https://ember-cli.com/user-guide/#Environments), [Vue CLI 3](https://cli.vuejs.org/guide/mode-and-env.html#using-env-variables-in-client-side-code)) recommend defining environment _values_ at _compile time_. This practice requires that the static assets are generated for each environment and regenerated for any change to an environment.
+
+>Static assets must be hosted at locations that are unique and independant of the web application environment
+
 
 _Immutable Web Applications_ reference environment _variables_ that are defined on the global scope and reference one of two ways:
 
