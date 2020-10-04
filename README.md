@@ -2,7 +2,7 @@
 
 ## ![Introduction](icons/favicon-16x16.png) Introduction
 
-_Immutable Web Applications_ is a framework-agnostic methodology for building and deploying static [single-page applications](https://en.wikipedia.org/wiki/Single-page_application) that:
+_Immutable Web Applications_<i> is a framework-agnostic methodology for building and deploying static [single-page applications](https://en.wikipedia.org/wiki/Single-page_application) that<i/>:
 
 - Minimizes risk and complexity of live releases.
 - Simplifies and maximizes caching.
