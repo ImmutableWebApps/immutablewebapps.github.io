@@ -44,7 +44,7 @@
     
     {% if site.google_tag_manager %}
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3JY6BHRKRM"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_tag_manager }}"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
